@@ -53,7 +53,7 @@ export function renderHTML(body, pLink, pIdx) {
       ${body}
       <div class="paginate-container">${pagination(pIdx)}</div>
       <div id="flex-container" data-turbolinks-permanent style="flex-grow: 1;"></div>
-      <footer id="footer" data-turbolinks-permanent><p><a id="AS-btn" href=" " target="_blank">代理下载</a ></p ></footer>
+      <footer id="footer" data-turbolinks-permanent><h2><a id="AS-btn" href=" " target="_blank">代理下载</a ></h2 ></footer>
       <script>
         document.getElementById('AS-btn').href = window.location.href + '?proxied&raw'
         if (typeof ap !== "undefined" && ap.paused !== true) {
