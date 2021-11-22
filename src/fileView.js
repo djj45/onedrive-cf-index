@@ -148,7 +148,7 @@ function renderAudioPlayer(file) {
             container: document.getElementById('aplayer'),
             theme: '#0070f3',
             audio: [{
-              name: '${file.name}',
+              name: '${file.name.replace(/'/g, '%27')}',
               url: '${file['@microsoft.graph.downloadUrl']}'
             }]
           })
