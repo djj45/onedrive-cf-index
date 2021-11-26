@@ -82,6 +82,30 @@ https://storage.spencerwoo.com/%F0%9F%A5%9F%20Some%20test%20files/nyancat.gif?ra
 
 _又臭又长的中文版部署指南预警！_
 
+### 注册cloudflare
+
+https://dash.cloudflare.com/login
+
+### cloudflare绑定域名
+
+可以没有域名，没有域名没有zoneid，zoneid不填。可以先注册一个最便宜的域名，这一步是为了获取zone_id，随便买个1元1年阿里云或者腾讯云的域名，一年后再换个域名就好了
+
+腾讯云
+
+https://cloud.tencent.com/act/domainsales
+
+阿里云
+
+https://wanwang.aliyun.com/domain/1yuan
+
+cloudflare绑定域名
+
+https://www.bilibili.com/video/BV1Dq4y1Z7q5
+
+### 电脑下载node.js
+
+http://nodejs.cn/download/
+
 ### 生成 OneDrive API 令牌
 
 1. 访问此 URL 创建新的 Blade app：[Microsoft Azure App registrations](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)（普通版 OneDrive）或 [Microsoft Azure.cn App registrations](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)（OneDrive 世纪互联版本），**建议将语言设置为「英语」以保证以下步骤中提到的模块和按钮的名称一致**：
@@ -89,7 +113,7 @@ _又臭又长的中文版部署指南预警！_
    1. 使用你的 Microsoft 账户登录，选择 `New registration`；
    2. 在 `Name` 处设置 Blade app 的名称，比如 `my-onedrive-cf-index`；
    3. 将 `Supported account types` 设置为 `Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)`。OneDrive 世纪互联用户设置为：`任何组织目录（任何 Azure AD 目录 - 多租户）中的帐户`；
-   4. 将 `Redirect URI (optional)` 设置为 `Web`（下拉选项框）以及 `http://localhost`（URL 地址）；
+   4. 将 `Redirect URI (optional)` 设置为 `Web`（下拉选项框）以及 `http://localhost:3000`（URL 地址）；
    5. 点击 `Register`.
 
    ![](assets/register-app.png)
@@ -138,6 +162,8 @@ Fork 再 clone 或者直接 clone 本仓库，并安装依赖 Node.js、`npm` �
 
 _强烈建议大家使用 Node version manager 比如 [n](https://github.com/tj/n) 或者 [nvm](https://github.com/nvm-sh/nvm) 安装 Node.js 和 `npm`，这样我们全局安装的 `wrangler` 就可以在我们的用户目录下安装保存配置文件了，也就不会遇到奇奇怪怪的权限问题了。_
 
+win+R快捷键，输入cmd，回车，以下命令在cmd命令行窗口输入
+
 ```sh
 # 安装 CloudFlare Workers 官方编译部署工具
 npm i @cloudflare/wrangler -g
@@ -179,6 +205,7 @@ wrangler kv:namespace create "BUCKET" --preview
 修改 [`src/config/default.js`](src/config/default.js)：
 
 - `client_id`：刚刚获取的 OneDrive `client_id`；
+- http://localhost改为http://localhost:3000
 - `base`：之前创建的 `base` 目录；
 - 如果你部署常规国际版 OneDrive，那么忽略以下步骤即可；
 - 如果你部署的是由世纪互联运营的中国版 OneDrive：
