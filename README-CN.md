@@ -180,6 +180,8 @@ wrangler whoami
 
 打开 <https://dash.cloudflare.com/login> 登录 CloudFlare，选择自己的域名，**再向下滚动一点，我们就能看到右侧栏处我们的 `account_id` 以及 `zone_id` 了。** 同时，在 `Workers` -> `Manage Workers` -> `Create a Worker` 处创建一个 **DRAFT** worker。
 
+没有域名的话点击Workers，里面有account_id（账户id），zone_id不填
+
 修改我们的 [`wrangler.toml`](wrangler.toml)：
 
 - `name`：就是我们刚刚创建的 draft worker 名称，我们的 Worker 默认会发布到这一域名下：`<name>.<worker_subdomain>.workers.dev`；
